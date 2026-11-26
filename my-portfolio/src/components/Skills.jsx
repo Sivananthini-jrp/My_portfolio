@@ -5,7 +5,7 @@ export default function Skills() {
   return (
     <section className="skills-section" id="skills">
       <div className="skills-header">
-        <p className="eyebrow">// TECHNICAL CAPABILITIES</p>
+        <p className="eyebrow">{"// TECHNICAL CAPABILITIES"}</p>
         <h2 className="skills-title">What I Build & Engineer</h2>
         <p className="skills-sub">
           From intelligent AI applications to automated workflows — 

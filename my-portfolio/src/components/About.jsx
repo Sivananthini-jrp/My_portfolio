@@ -25,7 +25,7 @@ const education = [
 export default function About() {
   return (
     <section className="about-section" id="about">
-      <p className="eyebrow eyebrow--center">// ABOUT ME</p>
+      <p className="eyebrow">{"// ABOUT ME"}</p>
 
       <h2 className="about-section__heading">
         Engineering intelligent systems through{" "}

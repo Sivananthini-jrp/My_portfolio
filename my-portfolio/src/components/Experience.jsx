@@ -7,9 +7,7 @@ export default function Experience() {
       <div className="experience__bg-grid" />
       
       <div className="experience__header">
-        <p className="eyebrow">
-          // WORK EXPERIENCE
-        </p>
+        <p className="eyebrow">{"// PROFESSIONAL EXPERIENCE"}</p>
         <h2 className="experience__heading">
           Where I've <em>Made an Impact</em>
         </h2>

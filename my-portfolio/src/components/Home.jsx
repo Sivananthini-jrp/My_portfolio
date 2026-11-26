@@ -36,7 +36,7 @@ export default function Home() {
       {/* ---------- HERO ---------- */}
       <header className="hero" ref={heroRef}>
         <div className="hero__text">
-          <p className="eyebrow">// AI AUTOMATION ENGINEER</p>
+         <p className="eyebrow">{"// AI AUTOMATION ENGINEER"}</p>
 
           <h1 className="hero__name">
             {"Sivananthini Jeyamurugan".split("").map((ch, i) => (
