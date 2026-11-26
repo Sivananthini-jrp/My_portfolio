@@ -7,7 +7,7 @@ export default function Resume() {
   return (
     <section className="resume-section" id="resume">
       <div className="resume-header">
-        <p className="eyebrow">// RESUME</p>
+        <p className="eyebrow"> {"// RESUME"} </p>
         <h2 className="resume-title">Professional Profile</h2>
         <p className="resume-sub">
           A quick overview of my professional profile and technical expertise.

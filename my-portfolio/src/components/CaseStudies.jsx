@@ -58,7 +58,7 @@ export default function CaseStudy() {
   return (
     <section className="case-study-split" id="work">
       <div className="case-study__header">
-        <p className="eyebrow">// PORTFOLIO</p>
+        <p className="eyebrow"> {"// PORTFOLIO"} </p>
         <h2 className="case-study__title">MY PROJECTS</h2>
       </div>
 

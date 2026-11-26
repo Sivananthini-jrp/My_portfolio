@@ -40,7 +40,7 @@ export default function Certifications() {
   return (
     <section className="certs-section" id="certifications">
       <div className="certs-header">
-        <p className="eyebrow">// CREDENTIALS</p>
+        <p className="eyebrow"> {"// CREDENTIALS"} </p>
         <h2 className="certs-title">Education & Certifications</h2>
         <p className="certs-sub">
           Academic foundations and continuous technical learning that power my engineering work.

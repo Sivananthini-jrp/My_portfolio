@@ -51,7 +51,7 @@ export default function Contact() {
       </div>
 
       <div className="contact__header">
-        <p className="eyebrow">// LET'S CONNECT</p>
+        <p className="eyebrow"> {"// LET'S CONNECT"} </p>
         <h2 className="contact__heading">Get in Touch</h2>
         <p className="contact__sub">
           I'm always open to discussing new opportunities and collaborations.
