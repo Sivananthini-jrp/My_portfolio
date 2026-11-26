@@ -1,16 +1,24 @@
-# React + Vite
+# Sivananthini Jeyamurugan — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, responsive portfolio website showcasing my work as an **AI Automation Engineer** and **Full Stack Developer**. Built with React, featuring a custom dark theme, interactive UI elements, and smooth animations.
 
-Currently, two official plugins are available:
+##  Live Demo
+[Insert your live portfolio link here, e.g., sivananthini-portfolio.com]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Built With
 
-## React Compiler
+- **Framework:** [React.js](https://reactjs.org/)
+- **Styling:** Vanilla CSS3 (Custom variables, Flexbox, CSS Grid)
+- **Icons:** Custom inline SVGs
+- **Typography:** Inter, Playfair Display, JetBrains Mono (Google Fonts)
+- **Deployment:** [Vercel / Netlify / GitHub Pages]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+##  Key Features
 
-## Expanding the Oxlint configuration
+- **Interactive Hero Section:** 3D tilt effect on the portrait, custom typewriter animations, and a scrolling tech stack ticker.
+- **Bento Grid Skills:** A modern, responsive grid layout consolidating AI, backend, frontend, and automation skills into one clean view.
+- **Dynamic Experience & Projects:** Clean, accessible layouts for detailing professional experience and AI projects, complete with live demo links.
+- **Animated Education Timeline:** A customized timeline highlighting academic achievements.
+- **Contact Section:** A glassmorphism card with an active "signal ring" animation, direct email links, and clickable phone numbers.
+- **Fully Responsive:** Optimized for desktop, tablet, and mobile devices.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

@@ -1,55 +1,78 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Home.css";
-import portrait from "../assets/portfolio_pic.png";
+import portrait from "../assets/portfolio pic.png";
+// Importing the PDF from the src folder
+import resumePdf from "../resume.pdf";
 
 const metrics = [
-  "REQUIREMENT GATHERING → FUNCTIONAL SPECS → VALIDATED SOLUTIONS",
-  "BRD · FRD · USER STORIES · UAT/SIT",
-  "AGILE & SCRUM · SDLC",
-  "FOCUS: BANKING & FINANCIAL SERVICES",
+  "AI AUTOMATION → WORKFLOW OPTIMIZATION → INTELLIGENT SOLUTIONS",
+  "GENERATIVE AI · LLMs · RAG · AI AGENTS",
+  "PYTHON · FASTAPI · REACT · API INTEGRATION",
+  "FOCUS: AI AUTOMATION & INTELLIGENT SYSTEMS",
 ];
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const frameRef = useRef(null);
+
+  // 3D tilt on the portrait
+  const handleTilt = (e) => {
+    const el = frameRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(900px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.02)`;
+  };
+
+  const resetTilt = () => {
+    if (frameRef.current)
+      frameRef.current.style.transform =
+        "perspective(900px) rotateY(0) rotateX(0) scale(1)";
+  };
+
   return (
     <div className="home">
-      {/* ---------- NAV ---------- */}
-      <nav className="nav">
-        <span className="nav__mark">SJ</span>
-        <ul className="nav__links">
-          <li>Home</li>
-          <li>About</li>
-          <li>Work</li>
-          <li>Contact</li>
-        </ul>
-        <a className="nav__cta" href="#contact">
-          Get in touch
-        </a>
-      </nav>
-
       {/* ---------- HERO ---------- */}
-      <header className="hero">
+      <header className="hero" ref={heroRef}>
         <div className="hero__text">
-          <p className="eyebrow">// BUSINESS ANALYST</p>
-          <h1 className="hero__name">Sivananthini Jeyamurugan</h1>
+          <p className="eyebrow">// AI AUTOMATION ENGINEER</p>
+
+          <h1 className="hero__name">
+            {"Sivananthini Jeyamurugan".split("").map((ch, i) => (
+              <span
+                key={i}
+                className="letter"
+                style={{ animationDelay: `${i * 0.03}s` }}
+              >
+                {ch === " " ? "\u00A0" : ch}
+              </span>
+            ))}
+          </h1>
+
           <p className="hero__role">
-            I turn <em>business needs</em> into functional specs and
-            validated solutions.
+            I turn <em>complex workflows</em> into intelligent,
+            automated solutions.
           </p>
+
           <p className="hero__desc">
-            Business Analyst with hands-on experience in requirement
-            gathering, functional documentation, and workflow improvement
-            across the SDLC. Currently an AI Automation Engineer at Wynsync
-            Technologies, translating business needs into functional
-            specifications and validated solutions.
+            AI Automation Engineer with hands-on experience in
+            developing AI-powered applications, workflow automation,
+            API integrations, and intelligent systems. Currently
+            working at Wynsync Technologies, building practical
+            solutions using Generative AI, LLMs, Python, and modern
+            web technologies to solve real-world problems.
           </p>
+
           <div className="hero__actions">
             <a className="btn btn--primary" href="#work">
-              View my work
+              View my projects
             </a>
+
             <a
               className="btn btn--ghost"
-              href="/Sivananthini_Jeyamurugan_BA_Resume_v2.pdf"
-              download
+              href={resumePdf} // Using the imported variable
+              download="Sivananthini_Jeyamurugan_Resume.pdf" // Forces a clean file name
             >
               Download résumé
             </a>
@@ -57,15 +80,28 @@ export default function Home() {
         </div>
 
         <div className="hero__portrait">
-          <div className="frame">
-            <img src={portrait} alt="Sivananthini Jeyamurugan, Business Analyst" />
-            <span className="frame__tag frame__tag--tl">FIG. 01</span>
-            <span className="frame__tag frame__tag--br">STATUS: AVAILABLE</span>
+          <div
+            className="frame"
+            ref={frameRef}
+            onMouseMove={handleTilt}
+            onMouseLeave={resetTilt}
+          >
+            <img
+              src={portrait}
+              alt="Sivananthini Jeyamurugan, AI Automation Engineer"
+            />
+            <span className="frame__tag frame__tag--tl">
+              FIG. 01
+            </span>
+            <span className="frame__tag frame__tag--br">
+              STATUS: BUILDING
+            </span>
+            <span className="frame__scan" />
           </div>
         </div>
       </header>
 
-      {/* ---------- METRIC TICKER (signature element) ---------- */}
+      {/* ---------- METRIC TICKER ---------- */}
       <div className="ticker" aria-hidden="false">
         <div className="ticker__track">
           {[...metrics, ...metrics].map((m, i) => (

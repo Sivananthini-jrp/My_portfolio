@@ -1,106 +1,166 @@
+/* =========================================================
+   NAVBAR STYLING
+   ========================================================= */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  background: rgba(10, 10, 10, 0.92);
-  backdrop-filter: blur(12px);
+  width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 0 24px;
-  height: 70px;
-  display: flex;
-  align-items: center;
+  background: rgba(10, 10, 15, 0.85); /* Matches your --bg with opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  transition: all 0.3s ease;
 }
 
 .nav-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
+
+/* ---------- LOGO ---------- */
 
 .nav-logo {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.logo-text span {
-  color: #818cf8;
-}
-
-.nav-menu {
+  cursor: pointer;
   display: flex;
-  gap: 4px;
   align-items: center;
 }
 
+.logo-text {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease;
+}
+
+.logo-text span {
+  color: var(--accent);
+}
+
+.nav-logo:hover .logo-text {
+  transform: scale(1.05);
+}
+
+/* ---------- DESKTOP MENU ---------- */
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .nav-link {
-  padding: 8px 14px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #94a3b8;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: none;
+  background: transparent;
   border: none;
-  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  letter-spacing: 0.03em;
 }
 
 .nav-link:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
 }
 
 .nav-link.active {
-  color: #818cf8;
-  background: rgba(129, 140, 248, 0.1);
-  font-weight: 600;
+  color: var(--ink);
 }
+
+/* The glowing underline for the active section */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- MOBILE TOGGLE ---------- */
 
 .nav-toggle {
   display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #ffffff;
-  background: none;
+  background: transparent;
   border: none;
+  color: var(--ink);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
 }
 
-@media (max-width: 992px) {
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: #0a0a0a;
-    flex-direction: column;
-    padding: 24px;
-    gap: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transform: translateY(-120%);
-    transition: transform 0.3s ease;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
+.nav-toggle:hover {
+  color: var(--accent);
+}
 
-  .nav-menu.active {
-    transform: translateY(0);
-  }
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
 
+@media (max-width: 900px) {
   .nav-toggle {
     display: block;
   }
 
+  .nav-menu {
+    position: fixed;
+    top: 60px; /* Adjust based on navbar height */
+    left: 0;
+    width: 100%;
+    background: var(--surface);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    /* Animation for menu opening */
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .nav-menu.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    pointer-events: auto;
+  }
+
   .nav-link {
-    padding: 12px 16px;
     width: 100%;
     text-align: center;
+    padding: 1.2rem;
     font-size: 0.95rem;
+  }
+
+  .nav-link::after {
+    display: none; /* Hide underline on mobile */
+  }
+
+  .nav-link:hover, 
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--accent);
   }
 }

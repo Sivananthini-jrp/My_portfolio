@@ -403,3 +403,7 @@ button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+.hero {
+  /* ... your existing styles ... */
+  min-height: calc(100vh - 80px); /* Makes it fill the rest of the screen */
+}

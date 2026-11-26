@@ -15,7 +15,7 @@ const links = [
   },
   {
     label: "GitHub",
-    href: "https://github.com/sivananthiniwynsync-jpg",
+    href: "https://github.com/Sivananthini-jrp", // Fixed to match resume
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
         <path
@@ -40,26 +40,36 @@ const links = [
 export default function Contact() {
   return (
     <section className="contact" id="contact">
+      {/* Background glow */}
+      <div className="contact__bg-glow" />
+
+      {/* Signal rings */}
       <div className="contact__signal" aria-hidden="true">
         <span className="ring ring--1" />
         <span className="ring ring--2" />
         <span className="ring ring--3" />
       </div>
 
-      <p className="eyebrow eyebrow--center">// LET'S CONNECT</p>
-      <h2 className="contact__heading">Get in Touch</h2>
-      <p className="contact__sub">
-        I'm always open to discussing new opportunities and collaborations.
-      </p>
+      <div className="contact__header">
+        <p className="eyebrow">// LET'S CONNECT</p>
+        <h2 className="contact__heading">Get in Touch</h2>
+        <p className="contact__sub">
+          I'm always open to discussing new opportunities and collaborations.
+        </p>
+      </div>
 
       <div className="contact-card">
+        <div className="contact-card__glow" />
+
         <p className="contact-card__prompt">
-          Interested in discussing business analysis, product strategy, or
-          potential opportunities? Let's connect!
+          Interested in AI automation, intelligent systems, or potential
+          opportunities? Let's build something great together.
         </p>
 
         <p className="contact-card__location">
-          Chennai, Tamil Nadu &nbsp;·&nbsp; +91 9965455740
+          <span>Chennai, Tamil Nadu</span>
+          <span className="dot-sep">·</span>
+          <a href="tel:+919965455740" className="location-phone">+91 9965455740</a>
         </p>
 
         <div className="contact-card__links">

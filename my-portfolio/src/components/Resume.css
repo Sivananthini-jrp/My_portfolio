@@ -1,98 +1,189 @@
-.resume {
+/* =========================================================
+   RESUME SECTION
+   ========================================================= */
+
+.resume-section {
   background: var(--bg);
   color: var(--ink);
-  padding: clamp(3.5rem, 9vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
   border-bottom: 1px solid var(--line);
-}
-
-.eyebrow--center {
-  text-align: center;
-}
-
-.resume__sub {
-  text-align: center;
-  color: var(--muted);
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-}
-
-/* ---------- TICKET / PASS ----------
-   A perforated top edge and a dashed tear-line above the
-   action turn this into a boarding-pass for the résumé
-   instead of another plain rounded card. */
-.pass {
   position: relative;
-  max-width: 620px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 3rem 2.5rem 2.25rem;
-  text-align: center;
+  overflow: hidden;
 }
 
-.pass::before {
+/* Ambient background glow */
+.resume-section::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background-image: radial-gradient(circle at 12px 0, var(--bg) 6px, transparent 6.5px);
-  background-size: 24px 10px;
-  background-repeat: repeat-x;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 60%);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.pass__summary {
+.resume-header {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.5rem;
+}
+
+.resume-header .eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.resume-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+
+.resume-sub {
   color: var(--muted);
   font-size: 1rem;
-  line-height: 1.75;
-  max-width: 46ch;
-  margin: 0 auto 2rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.pass__summary strong {
+/* =========================================================
+   RESUME CARD
+   ========================================================= */
+
+.resume-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px dashed rgba(255, 255, 255, 0.15); /* Dashed border for tech feel */
+  border-radius: 16px;
+  padding: 3rem;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s ease;
+}
+
+.resume-card:hover {
+  border-color: rgba(0, 255, 204, 0.4);
+}
+
+/* Decorative corners */
+.resume-card__corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.resume-card:hover .resume-card__corner {
+  opacity: 1;
+}
+
+.resume-card__corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; border-radius: 4px 0 0 0; }
+.resume-card__corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; border-radius: 0 4px 0 0; }
+.resume-card__corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; border-radius: 0 0 0 4px; }
+.resume-card__corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; border-radius: 0 0 4px 0; }
+
+.resume-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.resume-card__icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.resume-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.resume-card__summary {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 0 2.5rem;
+}
+
+.resume-card__summary strong {
   color: var(--ink);
   font-weight: 600;
 }
 
-.pass__cta {
-  position: relative;
+/* =========================================================
+   CTA BUTTON
+   ========================================================= */
+
+.resume-card__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-body);
+  gap: 0.75rem;
+  background: var(--accent);
+  color: var(--bg); /* Dark text on bright accent */
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
-  color: #06201c;
-  background: var(--accent);
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
   text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
 }
 
-.pass__cta::before {
-  content: "";
-  position: absolute;
-  top: -1.5rem;
-  left: -2.5rem;
-  right: -2.5rem;
-  border-top: 1px dashed var(--line);
+.resume-card__cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
 }
 
-.pass__cta svg {
-  width: 1.05rem;
-  height: 1.05rem;
-}
-
-.pass__cta:hover,
-.pass__cta:focus-visible {
+.resume-card__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px -12px var(--accent-dim);
+  box-shadow: 0 6px 20px rgba(0, 255, 204, 0.3);
+  background: #00e6b8; /* Slightly brighter on hover */
 }
 
-.pass__cta:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
+.resume-card__cta:hover svg {
+  transform: translateY(2px); /* Download icon moves down slightly */
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .resume-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .resume-card__summary {
+    font-size: 0.95rem;
+  }
+  
+  .resume-card__cta {
+    width: 100%;
+    justify-content: center;
+  }
 }

@@ -5,17 +5,14 @@ import './Navbar.css';
 const Navbar = ({ activeSection, scrollToSection }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Updated to match the unified sections
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
-    { id: 'case-studies', label: 'Case Studies' },
-    { id: 'deliverables', label: 'Deliverables' },
-    { id: 'analysis-skills', label: 'Analysis Skills' },
-    { id: 'technical-skills', label: 'Tech Skills' },
-    { id: 'tools', label: 'Tools' },
+    { id: 'work', label: 'Projects' }, // Matches the CaseStudies ID
+    { id: 'skills', label: 'Skills' }, // Matches the new unified Skills ID
     { id: 'certifications', label: 'Certifications' },
-    { id: 'resume', label: 'Resume' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -27,8 +24,8 @@ const Navbar = ({ activeSection, scrollToSection }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="nav-logo">
-          <span className="logo-text">BA<span>.</span></span>
+        <div className="nav-logo" onClick={() => handleClick('home')}>
+          <span className="logo-text">SJ<span>.</span></span>
         </div>
 
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -43,7 +40,11 @@ const Navbar = ({ activeSection, scrollToSection }) => {
           ))}
         </div>
 
-        <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="nav-toggle" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
